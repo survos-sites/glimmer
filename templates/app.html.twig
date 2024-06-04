@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for photo in photos.photo %}
+        {{ loop.first ? dump(photo) }}
+        {% set url = flickrThumbnailUrl(photo) %}
+        <figure class="figure">
+            <a href="{{ flickrPageUrl(photo) }}" target="_blank">
+            <img src="{{ url }}" class="figure-img img-fluid rounded" alt="...">
+            </a>
+            <figcaption class="figure-caption text-end">{{ photo.title }}
+                <br />{{ photo.tags }}
+            </figcaption>
+        </figure>
+
+    {% endfor %}
+{% endblock %}

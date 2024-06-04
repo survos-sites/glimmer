@@ -1,3 +1,7 @@
 body {
     background-color: skyblue;
 }
+
+.card-img-top {
+    max-width: 80px;
+}

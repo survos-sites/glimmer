@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for album in albums %}
+        {{ loop.first ? dump(album) }}
+
+        {% set url = flickrAlbumUrl(album) %}
+        {% set thumbUrl = flickrThumbnailUrl({id: album.primary, server:album.server, secret: album.secret}, size='s') %}
+        <twig:card :image="thumbUrl" h="200">
+            <twig:block name="title">
+                <a href="{{ url }}" target="_blank">
+                    {{ album.title }}
+                    <br />{{ album.photos }} photos
+                </a>
+                <a href="{{ path('flickr_list', {userId: album.owner, photosetId: album.id}) }}">
+                    List
+                </a>
+            </twig:block>
+            <twig:block name="text">
+                {{ album.description }}
+            </twig:block>
+
+        </twig:card>
+        <figure class="figure">
+            <a href="{{ url }}" target="_blank">
+                {{ url }}
+
+            <img src="{{ thumbUrl }}" class="figure-img img-fluid rounded" alt="...">
+            </a>
+            <figcaption class="figure-caption text-end">
+                {{ album.title }}
+                {{ album.description }}
+            </figcaption>
+        </figure>
+
+
+    {% endfor %}
+{% endblock %}

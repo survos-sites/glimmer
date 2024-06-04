@@ -1,4 +1,7 @@
 {
+    "artgris/filemanager-bundle": {
+        "version": "2.10.5"
+    },
     "doctrine/doctrine-bundle": {
         "version": "2.12",
         "recipe": {
@@ -26,6 +29,9 @@
             "migrations/.gitignore"
         ]
     },
+    "knplabs/knp-menu-bundle": {
+        "version": "v3.4.2"
+    },
     "phpunit/phpunit": {
         "version": "9.6",
         "recipe": {
@@ -39,6 +45,15 @@
             "phpunit.xml.dist",
             "tests/bootstrap.php"
         ]
+    },
+    "survos/bootstrap-bundle": {
+        "version": "1.5.238"
+    },
+    "survos/core-bundle": {
+        "version": "1.5.238"
+    },
+    "survos/flickr-bundle": {
+        "version": "1.5.237"
     },
     "symfony/asset-mapper": {
         "version": "7.1",
@@ -250,6 +265,18 @@
     },
     "symfony/ux-turbo": {
         "version": "v2.17.0"
+    },
+    "symfony/ux-twig-component": {
+        "version": "2.17",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "2.13",
+            "ref": "67814b5f9794798b885cec9d3f48631424449a01"
+        },
+        "files": [
+            "config/packages/twig_component.yaml"
+        ]
     },
     "symfony/validator": {
         "version": "7.1",
