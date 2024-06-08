@@ -2,7 +2,7 @@
 
 {% block body %}
     {% for album in albums %}
-        {{ loop.first ? dump(album) }}
+{#        {{ loop.first ? dump(album) }}#}
 
         {% set url = flickrAlbumUrl(album) %}
         {% set thumbUrl = flickrThumbnailUrl({id: album.primary, server:album.server, secret: album.secret}, size='s') %}
