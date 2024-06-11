@@ -15,6 +15,7 @@ use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Survos\FlickrBundle\Services\FlickrService;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use ToshY\BunnyNet\BaseAPI;
@@ -70,25 +71,46 @@ class AppController extends AbstractController
     #[Route('/profile', name: 'app_profile')]
     #[IsGranted('ROLE_USER')]
     public function profile(
+        UrlGeneratorInterface $urlGenerator
     ): Response
     {
         $flickr = $this->flickrService;
         /** @var User $user */
         $user = $this->getUser();
+        if (!$user->getFlickrKey()) {
+            return $this->redirect($flickr->getAuthUrl([
+                'callbackUrl' => $urlGenerator->generate('app_profile',
+                    referenceType:  UrlGeneratorInterface::ABSOLUTE_URL),
+            ]));
+        }
 
-        dd($flickr->authenticate()->test()->login());
+        $flickr->authenticate();
+//        $userId = $flickr->test()->login();
+        $nsId = $user->getFlickrUserId();
+        $info = $flickr->people()->getInfo($nsId);
+        $limits = $flickr->people()->getLimits();
 
-        $token = new StdOAuth1Token();
-        $token->setAccessToken($user->getFlickrKey());
-        $token->setAccessTokenSecret($user->getFlickrSecret());
-        $storage = new Session();
-        $storage->storeAccessToken('Flickr', $token);
-        $flickr->setOauthStorage($storage);
+        $groups = $flickr->people()->getGroups($nsId);
+        // @todo: pagination, etc.
+        $albums = $flickr->photosets()->getList($nsId);
+
+//        $authUrl = $flickr->getAuthUrl(); // for sopme reason, needs to happen before ->authenticate()
+
+//        $token = new StdOAuth1Token();
+//        $token->setAccessToken($user->getFlickrKey());
+//        $token->setAccessTokenSecret($user->getFlickrSecret());
+//        $storage = new Session();
+//        $storage->storeAccessToken('Flickr', $token);
+//        $flickr->setOauthStorage($storage);
 
 
-        $user = $this->getUser();
         return $this->render('profile.html.twig', [
-            'flickr_auth_url' => $flickr->getAuthUrl(),
+            'groups' => $groups,
+            'albums' => $albums,
+            'collections' => $flickr->collections()->getTree(userId: $nsId),
+            'info' => $info,
+            'limits' => $limits,
+            'flickr_auth_url' => $authUrl??false,
             'user' => $user]);
     }
 

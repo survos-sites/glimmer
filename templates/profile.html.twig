@@ -4,12 +4,56 @@
 
     {% set user = app.user %}
     {{ app.user.email }}
+    {{ dump(collections) }}
 
+    <h3>{{ collections.collections.collection|length }} Collections</h3>
+    {% for collection in collections.collections.collection %}
+        <h4>{{ collection.title }}</h4>
+        <a href="https://www.flickr.com/photos/museado/collections/72157722868022347/">
+            <img src="{{ collection.iconsmall }}" />
+
+        </a>
+        <li>
+            {{ dump(collection) }}
+        </li>
+    {% endfor %}
+
+    {{ dump(collections) }}
     {% if user.flickrKey %}
+
         Your Flickr account is linked.
+        <h3>
+            {{ groups.groups.group|length }} Groups
+        </h3>
+        {% for group in groups.groups.group %}
+            <li>
+                <a target="_blank" href="https://flickr.com/groups/{{ group.nsid }}">
+{#                    {{ group.nsid }}#}
+                    {{ group.name }}
+                </a>
+            </li>
+        {% endfor %}
+
+        {{ dump(albums) }}
+        <h3>
+            {{ albums.total }} Albums
+        </h3>
+        {% for album in albums.photoset %}
+            <li>
+                <a target="_blank" href="https://www.flickr.com/photos/{{ album.username }}/albums/{{ album.id }}">
+                    {#                    {{ group.nsid }}#}
+                    {{ album.title }}
+                    <br />
+                    <i>
+                        {{ album.description }}
+                    </i>
+                </a>
+            </li>
+        {% endfor %}
+
         Your most recent photo:
     {% else %}
-        <a href="{{ flickr_auth_url }}">
+        <a href="{{ flickr_auth_url|default(path('flickr_login')) }}">
             Link your Flickr account.
         </a>
     {% endif %}

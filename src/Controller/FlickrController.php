@@ -53,7 +53,7 @@ class FlickrController extends AbstractController
 
         if (!$oauth_token) {
             $callbackHere = $request->getUri();
-            $perm = 'read';
+            $perm = 'write';
             $url = $flickr->getAuthUrl($perm, $callbackHere);
             return $this->render('flickr/index.html.twig', [
                 'url' => $url,
@@ -62,10 +62,13 @@ class FlickrController extends AbstractController
 
         if ($oauth_token) {
             $accessToken = $flickr->retrieveAccessToken($oauth_verifier, $oauth_token);
+            // we need the userid for future calls
             $user
+                ->setFlickrUserId($accessToken->getExtraParams()['user_nsid'])
                 ->setFlickrKey($accessToken->getAccessToken())
                 ->setFlickrSecret($accessToken->getAccessTokenSecret());
             $this->entityManager->flush();
+            return $this->redirectToRoute('app_profile');
         }
 
 //        $accessToken->setAccessToken($config['access_key']);
@@ -77,13 +80,12 @@ class FlickrController extends AbstractController
 ////        dd($flickr->test()->testEcho());
 //        $storage = new Session();
 //// Create the access token from the strings you acquired before.
-        $token = new StdOAuth1Token();
-//// Add the token to the storage.
-        $storage->storeAccessToken('Flickr', $token);
-        dd($flickr->test()->login());
+//        $token = new StdOAuth1Token();
+////// Add the token to the storage.
+//        $storage->storeAccessToken('Flickr', $token);
 
         return $this->render('flickr/index.html.twig', [
-            'url' => $url,
+//            'url' => $url,
         ]);
     }
 
