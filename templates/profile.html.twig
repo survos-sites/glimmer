@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    {% set user = app.user %}
+    {{ app.user.email }}
+
+    {% if user.flickrKey %}
+        Your Flickr account is linked.
+        Your most recent photo:
+    {% else %}
+        <a href="{{ flickr_auth_url }}">
+            Link your Flickr account.
+        </a>
+    {% endif %}
+
+{% endblock %}

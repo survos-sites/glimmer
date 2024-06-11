@@ -51,6 +51,12 @@ class BunnyController extends AbstractController
                 path: '/'
             );
 
+
+//            +        $zoneDto = $serializer->denormalize($zoneArray, Zone::class, context: [
+//                +//            AbstractNormalizer::
+//                +        ]);
+
+
 //            $client = new Client($accessKey, 'museado', Region::NEW_YORK);
 //            $list = $client->listFiles('/');
             foreach ($list->getContents() as $fileInfo) {

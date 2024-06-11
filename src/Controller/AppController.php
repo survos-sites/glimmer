@@ -4,7 +4,9 @@ namespace App\Controller;
 
 //use Bunny\Storage\Client;
 //use Bunny\Storage\Region;
+use App\Entity\User;
 use Http\Discovery\Psr18ClientDiscovery;
+use OAuth\Common\Storage\Session;
 use OAuth\OAuth1\Token\StdOAuth1Token;
 use Samwilson\PhpFlickr\PhpFlickr;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,6 +15,7 @@ use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Survos\FlickrBundle\Services\FlickrService;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use ToshY\BunnyNet\BaseAPI;
 use ToshY\BunnyNet\Client\BunnyClient;
@@ -21,7 +24,7 @@ use ToshY\BunnyNet\Enum\Region;
 
 class AppController extends AbstractController
 {
-    public function __construct(private FlickrService $flickrService)
+    public function __construct(private readonly FlickrService $flickrService)
     {
 
     }
@@ -42,6 +45,7 @@ class AppController extends AbstractController
 
     public function upload()
     {
+
         $this->flickr = new PhpFlickr($config['consumer_key'], $config['consumer_secret']);
         $accessToken = new StdOAuth1Token();
         $accessToken->setAccessToken($config['access_key']);
@@ -63,4 +67,29 @@ class AppController extends AbstractController
         ]);
     }
 
-}
+    #[Route('/profile', name: 'app_profile')]
+    #[IsGranted('ROLE_USER')]
+    public function profile(
+    ): Response
+    {
+        $flickr = $this->flickrService;
+        /** @var User $user */
+        $user = $this->getUser();
+
+        dd($flickr->authenticate()->test()->login());
+
+        $token = new StdOAuth1Token();
+        $token->setAccessToken($user->getFlickrKey());
+        $token->setAccessTokenSecret($user->getFlickrSecret());
+        $storage = new Session();
+        $storage->storeAccessToken('Flickr', $token);
+        $flickr->setOauthStorage($storage);
+
+
+        $user = $this->getUser();
+        return $this->render('profile.html.twig', [
+            'flickr_auth_url' => $flickr->getAuthUrl(),
+            'user' => $user]);
+    }
+
+    }
