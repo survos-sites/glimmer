@@ -1,5 +1,5 @@
-# app/config/packages/artgris_file_manager.yaml
-artgris_file_manager:
-  conf:
-    default:
-      dir: '%kernel.project_dir%/public/uploads'
+## app/config/packages/artgris_file_manager.yaml
+#artgris_file_manager:
+#  conf:
+#    default:
+#      dir: '%kernel.project_dir%/public/uploads'

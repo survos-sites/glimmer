@@ -64,6 +64,7 @@ class FlickrController extends AbstractController
             $accessToken = $flickr->retrieveAccessToken($oauth_verifier, $oauth_token);
             // we need the userid for future calls
             $user
+                ->setFlickrUsername($accessToken->getExtraParams()['username'])
                 ->setFlickrUserId($accessToken->getExtraParams()['user_nsid'])
                 ->setFlickrKey($accessToken->getAccessToken())
                 ->setFlickrSecret($accessToken->getAccessTokenSecret());

@@ -1,0 +1,50 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <div class="text-danger">
+        Collections is not supported much by the API.
+    </div>
+    {% set user = app.user %}
+    {{ app.user.email }}
+
+    <h1>
+        Flickr User {{ app.user.flickrUsername }}
+        {{ app.user.flickrUserId }}
+        <a target="_blank" href="https://www.flickr.com/{{ app.user.flickrUsername }}/collections">
+            {{ collections.collections.collection|length }} Collections
+        </a>
+    </h1>
+
+
+
+    <ol>
+        {% for collection in collections.collections.collection %}
+            <li>
+{#                {{ dump(collection) }}#}
+{#                <a target="_blank" href="https://www.flickr.com/photos/{{ app.user.flickrUsername }}/{{ collection.id }}/">#}
+                    <h4>{{ collection.title }}</h4>
+{#                </a>#}
+                <h4>{{ collection.set|length }} Set(s)</h4>
+
+                <img src="{{ collection.iconsmall }}"/>
+                <ol>
+                    {% for set in collection.set %}
+                        <li>
+                            <small>{{ set.id }}</small>
+                            <a href="https://flickr.com/{{ app.user.flickrUsername }}/albums/{{ set.id }}">
+
+                            {{ set.title }}
+                            <i>{{ set.description }}</i>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ol>
+
+            </li>
+        {% endfor %}
+    </ol>
+
+
+
+{% endblock %}
