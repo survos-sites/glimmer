@@ -85,6 +85,9 @@
     "survos/bootstrap-bundle": {
         "version": "1.5.238"
     },
+    "survos/bunny-bundle": {
+        "version": "1.5.288"
+    },
     "survos/core-bundle": {
         "version": "1.5.238"
     },

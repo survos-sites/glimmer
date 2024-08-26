@@ -42,15 +42,7 @@ final class AppMenuEventListener implements KnpMenuHelperInterface
         $menu = $event->getMenu();
         $options = $event->getOptions();
 
-        //        $this->add($menu, 'app_homepage');
-        // for nested menus, don't add a route, just a label, then use it for the argument to addMenuItem
-
-        $nestedMenu = $this->addSubmenu($menu, 'Credits');
-
-        foreach (['bundles', 'javascript'] as $type) {
-            // $this->addMenuItem($nestedMenu, ['route' => 'survos_base_credits', 'rp' => ['type' => $type], 'label' => ucfirst($type)]);
-            $this->addMenuItem($nestedMenu, ['uri' => "#$type", 'label' => ucfirst($type)]);
-        }
+        $this->add($menu, 'survos_bunny_zones');
     }
 
     public function sidebarMenu(KnpMenuEvent $event): void
