@@ -1,0 +1,15 @@
+survos_bunny:
+    api_key: 5dc6a433-b025-42c7-b5f9-de009bfb5b7ea7a89fd3-2182-4868-a26c-cf0cab30df3c
+    zones:
+        museado:
+            id: 680125
+            region: NY
+            readonly_password: '%env(BUNNY_MUSEADO_READONLY_PASSWORD)%'
+        museado-pixie:
+            id: 752023
+            region: NY
+            readonly_password: '%env(BUNNY_MUSEADO_PIXIE_READONLY_PASSWORD)%'
+        museado-data-zip:
+            id: 752027
+            region: NY
+            readonly_password: '%env(BUNNY_MUSEADO_DATA_ZIP_READONLY_PASSWORD)%'
