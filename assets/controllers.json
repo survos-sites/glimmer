@@ -1,5 +1,14 @@
 {
     "controllers": {
+        "@survos/pixie-bundle": {
+            "pixie_apex": {
+                "enabled": true,
+                "fetch": "lazy",
+                "autoimport": {
+                    "@survos/pixie/style.css": true
+                }
+            }
+        },
         "@symfony/ux-turbo": {
             "turbo-core": {
                 "enabled": true,

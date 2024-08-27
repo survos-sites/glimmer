@@ -1,5 +1,5 @@
 survos_bunny:
-    api_key: 5dc6a433-b025-42c7-b5f9-de009bfb5b7ea7a89fd3-2182-4868-a26c-cf0cab30df3c
+    api_key: '%env(BUNNY_API_KEY)%'
     zones:
         museado:
             id: 680125

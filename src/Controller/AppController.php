@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-//use Bunny\Storage\Client;
-//use Bunny\Storage\Region;
 use App\Entity\User;
 use Http\Discovery\Psr18ClientDiscovery;
 use OAuth\Common\Storage\Session;
@@ -18,10 +16,6 @@ use Survos\FlickrBundle\Services\FlickrService;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
-use ToshY\BunnyNet\BaseAPI;
-use ToshY\BunnyNet\Client\BunnyClient;
-use ToshY\BunnyNet\EdgeStorageAPI;
-use ToshY\BunnyNet\Enum\Region;
 
 class AppController extends AbstractController
 {
