@@ -8,15 +8,7 @@ survos_bootstrap:
   menu_options:
       owner: null
       project: null
-      core: null
-  #    core: null
-      category: null
-      categoryField: null
-      catalog: null
-      spreadsheet: null
-      fieldMap: null
-      sheet: null
-      instance: null
+      itemKey: null
       frontPage: false
       showAppMenu: false
       pixieCode: null
