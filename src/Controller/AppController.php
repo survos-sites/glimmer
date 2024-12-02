@@ -55,10 +55,14 @@ class AppController extends AbstractController
     ): Response
     {
         $userId = '26016159@N00';
-        $result = $flickr->photosets()->getList($userId);
+        try {
+            $result = $flickr->photosets()->getList($userId);
+        } catch (\Exception $e) {
+            $result = null;
+        }
 
         return $this->render('albums.html.twig', [
-            'albums' => $result['photoset']
+            'albums' => $result ? $result['photoset'] : []
         ]);
     }
 
@@ -77,6 +81,8 @@ class AppController extends AbstractController
                     referenceType:  UrlGeneratorInterface::ABSOLUTE_URL),
             ]));
         }
+        // for profile, this MUST be the user profile
+
 
         $flickr->authenticate();
 //        $userId = $flickr->test()->login();

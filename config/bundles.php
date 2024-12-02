@@ -25,5 +25,5 @@ return [
     Survos\AuthBundle\SurvosAuthBundle::class => ['all' => true],
     Symfony\UX\Icons\UXIconsBundle::class => ['all' => true],
     Survos\PixieBundle\SurvosPixieBundle::class => ['all' => true],
-    Survos\BunnyBundle\SurvosBunnyBundle::class => ['all' => true],
+    Survos\SimpleDatatables\SurvosSimpleDatatablesBundle::class => ['all' => true],
 ];

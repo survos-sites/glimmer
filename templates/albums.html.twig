@@ -1,12 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block title "FlickrBundle Demo" %}
+{% block page_header "FlickrBundle Demo" %}
+
 {% block body %}
     {% for album in albums %}
 {#        {{ loop.first ? dump(album) }}#}
 
         {% set url = flickrAlbumUrl(album) %}
         {% set thumbUrl = flickrThumbnailUrl({id: album.primary, server:album.server, secret: album.secret}, size='s') %}
-        <twig:card :image="thumbUrl" h="200">
+        <twig:card :image="thumbUrl" h="400">
             <twig:block name="title">
                 <a href="{{ url }}" target="_blank">
                     {{ album.title }}
@@ -16,22 +19,27 @@
                     List
                 </a>
             </twig:block>
+            <twig:block name="card_body">
+            </twig:block>
+            <twig:block name="links">
+{#                flickr.com#}
+            </twig:block>
             <twig:block name="text">
                 {{ album.description }}
             </twig:block>
 
         </twig:card>
-        <figure class="figure">
-            <a href="{{ url }}" target="_blank">
-                {{ url }}
+{#        <figure class="figure">#}
+{#            <a href="{{ url }}" target="_blank">#}
+{#                {{ url }}#}
 
-            <img src="{{ thumbUrl }}" class="figure-img img-fluid rounded" alt="...">
-            </a>
-            <figcaption class="figure-caption text-end">
-                {{ album.title }}
-                {{ album.description }}
-            </figcaption>
-        </figure>
+{#            <img src="{{ thumbUrl }}" class="figure-img img-fluid rounded" alt="...">#}
+{#            </a>#}
+{#            <figcaption class="figure-caption text-end">#}
+{#                {{ album.title }}#}
+{#                {{ album.description }}#}
+{#            </figcaption>#}
+{#        </figure>#}
 
 
     {% endfor %}

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bf5996f232621bc647fb37d5435813ec",
+    "content-hash": "3f158b815c02de31ac5686157733f464",
     "packages": [
         {
             "name": "bunnycdn/storage",
@@ -4171,72 +4171,6 @@
             "time": "2024-11-24T14:57:20+00:00"
         },
         {
-            "name": "survos/bunny-bundle",
-            "version": "1.5.408",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/survos/SurvosBunnyBundle.git",
-                "reference": "6e5765f890ee546f34dedc44c105eabec07b90d3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/survos/SurvosBunnyBundle/zipball/6e5765f890ee546f34dedc44c105eabec07b90d3",
-                "reference": "6e5765f890ee546f34dedc44c105eabec07b90d3",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^8.3",
-                "symfony/config": "^6.4 || ^7.1",
-                "symfony/dependency-injection": "^6.4 || ^7.1",
-                "symfony/http-kernel": "^6.4 || ^7.1",
-                "toshy/bunnynet-php": "^4.5",
-                "twig/twig": "^3.4",
-                "zenstruck/bytes": "^1.0",
-                "zenstruck/console-extra": "^1.4"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "^2.0",
-                "phpunit/phpunit": "^11.4",
-                "survos/simple-datatables-bundle": "^1.5",
-                "symfony/browser-kit": "^6.4 || ^7.1",
-                "symfony/framework-bundle": "^6.4 || ^7.1",
-                "symfony/http-client": "^6.4 || ^7.1",
-                "symfony/phpunit-bridge": "^6.4 || ^7.1",
-                "symfony/twig-bundle": "^6.4 || ^7.1",
-                "symfony/var-dumper": "^6.4 || ^7.1",
-                "symfony/yaml": "^6.4 || ^7.1"
-            },
-            "suggest": {
-                "survos/simple-datatables-bundle": "searchable/sortable tables when browsing"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "Survos\\BunnyBundle\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Symfony bundle for interacting with BunnyCDN using https://github.com/ToshY/BunnyNet-PHP",
-            "keywords": [
-                "symfony",
-                "symfony-ux"
-            ],
-            "support": {
-                "issues": "https://github.com/survos/SurvosBunnyBundle/issues",
-                "source": "https://github.com/survos/SurvosBunnyBundle/tree/1.5.408"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/kbond",
-                    "type": "github"
-                }
-            ],
-            "time": "2024-11-29T15:36:35+00:00"
-        },
-        {
             "name": "survos/core-bundle",
             "version": "1.5.395",
             "source": {
@@ -4530,6 +4464,84 @@
                 }
             ],
             "time": "2024-11-24T17:32:23+00:00"
+        },
+        {
+            "name": "survos/simple-datatables-bundle",
+            "version": "1.5.294",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/survos/SurvosSimpleDatatablesBundle.git",
+                "reference": "929bd7bb86dcbad52f9cd9c1ab7de166edaf351b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/survos/SurvosSimpleDatatablesBundle/zipball/929bd7bb86dcbad52f9cd9c1ab7de166edaf351b",
+                "reference": "929bd7bb86dcbad52f9cd9c1ab7de166edaf351b",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1",
+                "survos/core-bundle": "^1.5.294",
+                "symfony/config": "^7.0 || ^6.4",
+                "symfony/dependency-injection": "^7.0 || ^6.4",
+                "symfony/http-kernel": "^7.0 || ^6.4",
+                "symfony/options-resolver": "^7.0 || ^6.4",
+                "symfony/stimulus-bundle": "^2.9",
+                "symfony/ux-twig-component": "^2.9",
+                "twig/twig": "^3.4"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.8",
+                "roave/security-advisories": "dev-latest",
+                "symfony/browser-kit": "^7.0 || ^6.4",
+                "symfony/framework-bundle": "^7.0 || ^6.4",
+                "symfony/phpunit-bridge": "^7.0 || ^6.4",
+                "symfony/twig-bundle": "^7.0 || ^6.4",
+                "symfony/var-dumper": "^7.0 || ^6.4"
+            },
+            "suggest": {
+                "monolog/monolog": "Allows more advanced logging of the application flow"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.6-dev"
+                },
+                "symfony": {
+                    "require": "^7.0 || ^6.4"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Survos\\SimpleDatatables\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tac Tacelosky",
+                    "email": "tacman@gmail.com"
+                }
+            ],
+            "description": "incorporate simple datatables, using twig and stimulus",
+            "keywords": [
+                "symfony-ux",
+                "symfony6"
+            ],
+            "support": {
+                "issues": "https://github.com/survos/SurvosSimpleDatatablesBundle/issues",
+                "source": "https://github.com/survos/SurvosSimpleDatatablesBundle/tree/1.5.294"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/kbond",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-08-25T16:17:43+00:00"
         },
         {
             "name": "symfony/asset",
@@ -10664,65 +10676,6 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
-        },
-        {
-            "name": "zenstruck/bytes",
-            "version": "v1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zenstruck/bytes.git",
-                "reference": "e39fa60a6204576dbc62304bbab2ac395ff7610f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zenstruck/bytes/zipball/e39fa60a6204576dbc62304bbab2ac395ff7610f",
-                "reference": "e39fa60a6204576dbc62304bbab2ac395ff7610f",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.0"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "^1.4",
-                "phpunit/phpunit": "^9.5.0",
-                "symfony/phpunit-bridge": "^6.3",
-                "symfony/var-dumper": "^5.4|^6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Zenstruck\\": [
-                        "src/"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kevin Bond",
-                    "email": "kevinbond@gmail.com"
-                }
-            ],
-            "description": "Parse, manipulate, humanize, and format bytes.",
-            "homepage": "https://github.com/zenstruck/bytes",
-            "keywords": [
-                "information",
-                "unit"
-            ],
-            "support": {
-                "issues": "https://github.com/zenstruck/bytes/issues",
-                "source": "https://github.com/zenstruck/bytes/tree/v1.0.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/kbond",
-                    "type": "github"
-                }
-            ],
-            "time": "2023-07-26T15:23:27+00:00"
         },
         {
             "name": "zenstruck/callback",

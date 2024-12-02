@@ -11,7 +11,6 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
-#[AsEventListener(event: KnpMenuEvent::NAVBAR_MENU, method: 'navbarMenu')]
 // #[AsEventListener(event: KnpMenuEvent::NAVBAR_MENU2, method: 'navbarMenu')]
 #[AsEventListener(event: KnpMenuEvent::SIDEBAR_MENU, method: 'sidebarMenu')]
 #[AsEventListener(event: KnpMenuEvent::PAGE_MENU, method: 'pageMenu')]
@@ -37,12 +36,21 @@ final class AppMenuEventListener implements KnpMenuHelperInterface
 
     }
 
+    #[AsEventListener(event: KnpMenuEvent::NAVBAR_MENU)]
     public function navbarMenu(KnpMenuEvent $event): void
     {
         $menu = $event->getMenu();
         $options = $event->getOptions();
+        $this->add($menu, uri: 'https://flickr.com');
+    }
 
-        $this->add($menu, 'survos_bunny_zones');
+    #[AsEventListener(event: 'navbar_zone')]
+    public function navbarZoneMenu(KnpMenuEvent $event): void
+    {
+        $menu = $event->getMenu();
+        $options = $event->getOptions();
+        dd($options);
+        $this->add($menu, uri: 'https://flickr.com');
     }
 
     public function sidebarMenu(KnpMenuEvent $event): void
