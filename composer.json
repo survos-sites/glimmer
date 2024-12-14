@@ -9,6 +9,7 @@
         "php": "^8.3",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "bizkit/versioning-bundle": "^1.2",
         "bunnycdn/storage": "^3.4",
         "doctrine/dbal": "^3",
         "doctrine/doctrine-bundle": "^2.12",
