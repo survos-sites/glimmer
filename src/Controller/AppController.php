@@ -40,18 +40,6 @@ class AppController extends AbstractController
         ]);
     }
 
-    public function upload()
-    {
-
-        $this->flickr = new PhpFlickr($config['consumer_key'], $config['consumer_secret']);
-        $accessToken = new StdOAuth1Token();
-        $accessToken->setAccessToken($config['access_key']);
-        $accessToken->setAccessTokenSecret($config['access_secret']);
-        $this->flickr->getOauthTokenStorage()->storeAccessToken('Flickr', $accessToken);
-
-
-    }
-
     #[Route('/', name: 'app_homepage')]
     #[Template('homepage.html.twig')]
     public function homepage()
