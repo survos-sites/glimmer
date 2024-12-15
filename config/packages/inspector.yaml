@@ -8,6 +8,7 @@ inspector:
     ignore_commands:
         - 'messenger:consume'
         - 'assets:install'
+        - 'importmap:install'
         - 'cache:clear'
         - 'doctrine:migrations:migrate'
         - 'schedule:run'

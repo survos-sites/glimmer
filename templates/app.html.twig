@@ -10,7 +10,7 @@
             </a>
             <figcaption class="figure-caption text-end">{{ photo.title }}
                 <br />
-                {{ dump(photo.tags) }}
+                {{ photo.tags|json_encode }}
                 {{ photo.tags }}
             </figcaption>
         </figure>
