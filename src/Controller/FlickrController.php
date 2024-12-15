@@ -4,9 +4,9 @@ namespace App\Controller;
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
-use OAuth\Common\Storage\Memory;
 use OAuth\Common\Storage\Session;
 use OAuth\OAuth1\Token\StdOAuth1Token;
+use Survos\FlickrBundle\Metadata\FlickrUserInterface;
 use Survos\FlickrBundle\Services\FlickrService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,6 +34,7 @@ class FlickrController extends AbstractController
         #[MapQueryParameter] ?string $oauth_verifier = null,
     ): Response
     {
+        /** @var StdOAuth1Token $accessToken */
         $accessToken = new StdOAuth1Token();
         $flickr = $this->flickrService;
         $storage = new Session();
@@ -63,12 +64,18 @@ class FlickrController extends AbstractController
         if ($oauth_token) {
             $accessToken = $flickr->retrieveAccessToken($oauth_verifier, $oauth_token);
             // we need the userid for future calls
-            $user
-                ->setFlickrUsername($accessToken->getExtraParams()['username'])
-                ->setFlickrUserId($accessToken->getExtraParams()['user_nsid'])
-                ->setFlickrKey($accessToken->getAccessToken())
-                ->setFlickrSecret($accessToken->getAccessTokenSecret());
-            $this->entityManager->flush();
+            /** @var User $user */
+            if ($user instanceof FlickrUserInterface) {
+                // this is in part to make phpstan happy
+                if ($accessToken instanceof StdOAuth1Token) {
+                    $user
+                        ->setFlickrUsername($accessToken->getExtraParams()['username'])
+                        ->setFlickrUserId($accessToken->getExtraParams()['user_nsid'])
+                        ->setFlickrKey($accessToken->getAccessToken())
+                        ->setFlickrSecret($accessToken->getAccessTokenSecret());
+                    $this->entityManager->flush();
+                }
+            }
             return $this->redirectToRoute('app_profile');
         }
 
