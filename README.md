@@ -13,6 +13,22 @@ The primary page simply displays the configured users albums.
 The Flickr Application name and ID are _not_ secret, so they can simply be defined in the .env file.
 The API key and secret, though, which allow users to log into their flickr account, are secret, so are added to the vault.
 
+The /flickr_login route has a link to redirect to flickr with the auth code, and when it returns the various tokens are added to the user record.
+
+```php
+        if ($oauth_token) {
+            $accessToken = $flickr->retrieveAccessToken($oauth_verifier, $oauth_token);
+            // we need the userid for future calls
+            $user
+                ->setFlickrUsername($accessToken->getExtraParams()['username'])
+                ->setFlickrUserId($accessToken->getExtraParams()['user_nsid'])
+                ->setFlickrKey($accessToken->getAccessToken())
+                ->setFlickrSecret($accessToken->getAccessTokenSecret());
+            $this->entityManager->flush();
+            return $this->redirectToRoute('app_profile');
+        }
+
+```
 
 
 ```bash

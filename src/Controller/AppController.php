@@ -75,14 +75,14 @@ class AppController extends AbstractController
         /** @var User $user */
         $user = $this->getUser();
         if (!$user->getFlickrKey()) {
-            $redirect = $flickr->getAuthUrl([
+            return $this->redirect($flickr->getAuthUrl([
                 'callbackUrl' => $urlGenerator->generate('app_profile',
                     referenceType:  UrlGeneratorInterface::ABSOLUTE_URL),
-            ]);
-            dd($redirect);
-            return $this->redirect($redirect);
+            ]));
         }
         // for profile, this MUST be the user profile
+
+        // this persists the token and such to
         $flickr->authenticate();
 //        $userId = $flickr->test()->login();
         $nsId = $user->getFlickrUserId();
@@ -93,7 +93,7 @@ class AppController extends AbstractController
         // @todo: pagination, etc.
         $albums = $flickr->photosets()->getList($nsId);
 
-        $authUrl = $flickr->getAuthUrl(); // for some reason, needs to happen before ->authenticate()
+//        $authUrl = $flickr->getAuthUrl(); // for sopme reason, needs to happen before ->authenticate()
 
 //        $token = new StdOAuth1Token();
 //        $token->setAccessToken($user->getFlickrKey());

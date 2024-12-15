@@ -8,6 +8,8 @@
     {% if user.flickrKey %}
 
         Your Flickr account is linked.
+        {{ user.flickrUserId }}
+        {{ user.flickrUsername }}
         <h3>
             {{ groups.groups.group|length }} Groups
         </h3>

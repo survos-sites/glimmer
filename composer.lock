@@ -4197,23 +4197,23 @@
         },
         {
             "name": "survos/bootstrap-bundle",
-            "version": "1.5.438",
+            "version": "1.5.439",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/BootstrapBundle.git",
-                "reference": "c6d8b12b4e4db44b0aef598c28e5301679876447"
+                "reference": "c60f1c9cad1ca89c922b60109cb9dd06dc91e804"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/survos/BootstrapBundle/zipball/c6d8b12b4e4db44b0aef598c28e5301679876447",
-                "reference": "c6d8b12b4e4db44b0aef598c28e5301679876447",
+                "url": "https://api.github.com/repos/survos/BootstrapBundle/zipball/c60f1c9cad1ca89c922b60109cb9dd06dc91e804",
+                "reference": "c60f1c9cad1ca89c922b60109cb9dd06dc91e804",
                 "shasum": ""
             },
             "require": {
                 "knplabs/knp-menu-bundle": "^3.2",
                 "php": "^8.3",
                 "survos/core-bundle": "^1.5",
-                "survos/installer": "^2.0",
+                "survos/installer": "^1.4||^2.0",
                 "symfony/config": "^6.4 || ^7.1",
                 "symfony/dependency-injection": "^6.4 || ^7.1",
                 "symfony/http-kernel": "^6.4 || ^7.1",
@@ -4284,7 +4284,7 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/BootstrapBundle/issues",
-                "source": "https://github.com/survos/BootstrapBundle/tree/1.5.438"
+                "source": "https://github.com/survos/BootstrapBundle/tree/1.5.439"
             },
             "funding": [
                 {
@@ -4292,7 +4292,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-12-12T18:15:09+00:00"
+            "time": "2024-12-15T14:27:33+00:00"
         },
         {
             "name": "survos/core-bundle",
