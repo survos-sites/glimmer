@@ -7,6 +7,7 @@ use Http\Discovery\Psr18ClientDiscovery;
 use OAuth\Common\Storage\Session;
 use OAuth\OAuth1\Token\StdOAuth1Token;
 use Samwilson\PhpFlickr\PhpFlickr;
+use Symfony\Bridge\Twig\Attribute\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpClient\HttpClient;
@@ -19,7 +20,8 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class AppController extends AbstractController
 {
-    public function __construct(private readonly FlickrService $flickrService)
+    public function __construct(
+        private readonly FlickrService $flickrService)
     {
 
     }
@@ -51,10 +53,19 @@ class AppController extends AbstractController
     }
 
     #[Route('/', name: 'app_homepage')]
-    public function home(FlickrService $flickr,
+    #[Template('homepage.html.twig')]
+    public function homepage()
+    {
+        return ['users' => [
+            '26016159@N00'
+        ]];
+    }
+
+    #[Route('/albums/{userId}', name: 'app_albums')]
+    public function albums(FlickrService $flickr,
+        string $userId='26016159@N00',
     ): Response
     {
-        $userId = '26016159@N00';
         try {
             $result = $flickr->photosets()->getList($userId);
         } catch (\Exception $e) {

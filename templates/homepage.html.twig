@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    Glimmer Home Page
+
+    Show photosets (aka Albums) from the following users:
+
+    <ol>
+        {% for userId in users %}
+            <li>
+                <a href="{{ path('app_albums', {userId: userId}) }}">
+                    {{ userId }}
+                </a>
+            </li>
+        {% endfor %}
+    </ol>
+
+{% endblock %}

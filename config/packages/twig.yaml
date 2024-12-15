@@ -1,6 +1,8 @@
 twig:
     file_name_pattern: '*.twig'
-
+    globals:
+        flickr_app_id: '%env(FLICKR_APP_ID)%'
+        flickr_app_name: '%env(FLICKR_APP_NAME)%'
 when@test:
     twig:
         strict_variables: true
