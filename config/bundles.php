@@ -28,4 +28,5 @@ return [
     Survos\SimpleDatatables\SurvosSimpleDatatablesBundle::class => ['all' => true],
     Bizkit\VersioningBundle\BizkitVersioningBundle::class => ['all' => true],
     Survos\DeploymentBundle\SurvosDeploymentBundle::class => ['dev' => true, 'test' => true],
+    Inspector\Symfony\Bundle\InspectorBundle::class => ['all' => true],
 ];
