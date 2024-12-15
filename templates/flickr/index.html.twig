@@ -4,11 +4,24 @@
 
 {% block body %}
 
-<div class="example-wrapper">
-    <a href="{{ url }}">
-        <h1>Login to Flickr</h1>
+    {% if is_granted('ROLE_USER') %}
+        {% set user = app.user %}
+        {% if user.flickrKey %}
+            Your Flickr account is linked.
+            {{ user.flickrUserId }}
+            {{ user.flickrUsername }}
+            <a href="{{ path('app_profile') }}">See your profile and Flickr photos</a>
 
-    </a>
+        {% else %}
+            <div class="example-wrapper">
+            <a href="{{ url }}">
+                <h1>Login to Flickr</h1>
 
-</div>
+            </a>
+        {% endif %}
+        {% else %}
+        Log into this application first then link your account to flickr
+    {% endif %}
+
+    </div>
 {% endblock %}

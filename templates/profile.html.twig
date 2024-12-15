@@ -55,8 +55,8 @@
 
         Your most recent photo:
     {% else %}
-        <a href="{{ flickr_auth_url|default(path('flickr_login')) }}">
-            Link your Flickr account.
+        <a href="{{ path('flickr_login') }}">
+            Link your {{ user.email }} Flickr account.
         </a>
     {% endif %}
 

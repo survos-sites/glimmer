@@ -109,7 +109,6 @@ class AppController extends AbstractController
             'collections' => $flickr->collections()->getTree(userId: $nsId),
             'info' => $info,
             'limits' => $limits,
-            'flickr_auth_url' => $authUrl??false,
             'user' => $user]);
     }
 
