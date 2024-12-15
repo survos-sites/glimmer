@@ -8,7 +8,7 @@
     "repository": "https://github.com/survos-sites/glimmer",
     "scripts": {
         "dokku": {
-            "predeploy": "release: ./c importmap:install && ./c asset-map:compile && ./c secrets:decrypt-to-local --force && ./c doctrine:migrations:migrate -n --allow-no-migration",
+            "predeploy": "./c importmap:install && ./c asset-map:compile && ./c secrets:decrypt-to-local --force && ./c doctrine:migrations:migrate -n --allow-no-migration",
             "postdeploy": ""
         }
     },
