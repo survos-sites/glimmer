@@ -1,2 +1,2 @@
 web:  vendor/bin/heroku-php-nginx -C nginx.conf  -F fpm_custom.conf public/
-release: bin/console importmap:install && bin/console asset-map:compile && bin/console doctrine:migrations:migrate -n --allow-no-migration
+release: ./c importmap:install && ./c asset-map:compile && ./c secrets:decrypt-to-local --force && ./c doctrine:migrations:migrate -n --allow-no-migration
