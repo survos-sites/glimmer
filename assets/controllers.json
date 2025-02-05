@@ -7,15 +7,6 @@
                 "autoimport": []
             }
         },
-        "@survos/pixie-bundle": {
-            "pixie_apex": {
-                "enabled": true,
-                "fetch": "lazy",
-                "autoimport": {
-                    "@survos/pixie/style.css": true
-                }
-            }
-        },
         "@survos/simple-datatables-bundle": {
             "table": {
                 "enabled": true,

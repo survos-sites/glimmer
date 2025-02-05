@@ -1,3 +1,0 @@
-survos_pixie:
-  resource: '@SurvosPixieBundle/config/routes.yaml'
-  prefix: '/pixie'
