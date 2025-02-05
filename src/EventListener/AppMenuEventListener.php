@@ -41,7 +41,7 @@ final class AppMenuEventListener implements KnpMenuHelperInterface
     {
         $menu = $event->getMenu();
         $options = $event->getOptions();
-        $this->add($menu, uri: 'https://flickr.com');
+//        $this->add($menu, uri: 'https://flickr.com');
     }
 
     #[AsEventListener(event: 'navbar_zone')]
@@ -50,7 +50,6 @@ final class AppMenuEventListener implements KnpMenuHelperInterface
         $menu = $event->getMenu();
         $options = $event->getOptions();
         dd($options);
-        $this->add($menu, uri: 'https://flickr.com');
     }
 
     public function sidebarMenu(KnpMenuEvent $event): void

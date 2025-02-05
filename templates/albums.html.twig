@@ -13,10 +13,14 @@
         <twig:card :image="thumbUrl" h="400">
             <twig:block name="title">
                 <a href="{{ url }}" target="_blank">
+                    <twig:ux:icon name="logos:flickr-icon" />
                     {{ album.title }}
-                    <br />{{ album.photos }} photos
+                    <br />{{ album.photos }} photos on Flickr
                 </a>
+                <br />
+
                 <a href="{{ path('flickr_list', {userId: album.owner, photosetId: album.id}) }}">
+                    <twig:ux:icon name="tabler:list" class=" text-muted"/>
                     List
                 </a>
             </twig:block>
