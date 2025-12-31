@@ -1,5 +1,11 @@
 # Glimmer: A flickr-bundle demo
 
+DEPRECATED!   Easier to re-create this application than to update it.
+
+More interesting would be to use jolicode/media-bundle
+
+
+
 The demo integrates survos/flickr-bundle, which is a wrapper for https://github.com/samwilson/phpflickr
 
 It also demonstrates how to deploy using symfony's secrets vault, putting only the decryption key in the environment variables of dokku.
